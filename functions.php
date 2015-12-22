@@ -14,3 +14,15 @@ function wsu_news_register_sidebars() {
 	);
 	register_sidebar( $sidebar_args );
 }
+
+add_action( 'pre_get_posts', 'wsu_news_top_stories' );
+/**
+ * Set the home page query to only include posts from the Top Stories category.
+ *
+ * @param WP_Query $query Current query object to be modified.
+ */
+function wsu_news_top_stories( $query ) {
+	if ( is_home() && $query->is_main_query() ) {
+		$query->set( 'category_name', 'top-stories' );
+	}
+}
