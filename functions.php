@@ -63,3 +63,20 @@ function wsu_news_redirect_publication_id() {
 	}
 	return;
 }
+
+add_shortcode( 'wsu_news_valentine', 'wsu_news_display_valentine_shortcode' );
+/**
+ * Display a specific WSU Valentine gallery from Facebook.
+ *
+ * @param $args
+ *
+ * @return string
+ */
+function wsu_news_display_valentine_shortcode( $args ) {
+	ob_start();
+	?><div id="fb-root"></div><script>(function(d, s, id) {  var js, fjs = d.getElementsByTagName(s)[0];  if (d.getElementById(id)) return;  js = d.createElement(s); js.id = id;  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.3";  fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));</script><div class="fb-post" data-href="https://www.facebook.com/media/set/?set=a.1108671689165435.1073741950.133018306730783&amp;type=3" data-width="500"><div class="fb-xfbml-parse-ignore"><blockquote cite="https://www.facebook.com/media/set/?set=a.1108671689165435.1073741950.133018306730783&amp;type=3"><p>Here are #WSU Love Stories submitted from our Facebook fans. #WSUValentines #GoCougs</p>Posted by <a href="https://www.facebook.com/WSUPullman/">Washington State University</a> on&nbsp;<a href="https://www.facebook.com/media/set/?set=a.1108671689165435.1073741950.133018306730783&amp;type=3">Wednesday, February 10, 2016</a></blockquote></div></div><?php
+	$content = ob_get_contents();
+	ob_end_clean();
+
+	return $content;
+}
