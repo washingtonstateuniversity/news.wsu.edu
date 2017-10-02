@@ -1,5 +1,8 @@
 <?php
 
+// Disable the Select2 interface used with WSU University Taxonomy.
+add_filter( 'wsu_taxonomy_select2_interface', '__return_false' );
+
 add_action( 'widgets_init', 'wsu_news_register_sidebars' );
 /**
  * Register the sidebars and custom widgets used by the theme.
